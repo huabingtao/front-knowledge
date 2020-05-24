@@ -1,0 +1,75 @@
+<!--
+ * @Author: huabingtao
+ * @Date: 2020-05-24 15:30:57
+ * @LastEditTime: 2020-05-24 16:07:59
+ * @LastEditors: huabingtao
+ * @Description: 
+ * @FilePath: /front-knowledge/html/prettierCheckbox/prettierCheckbox.html
+ * @可以输入预定的版权声明、个性签名、空行等
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>漂亮的checkbox</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      body {
+        padding: 30px;
+      }
+      :root input[type="checkbox"] {
+        position: relative;
+        left: -1000em;
+      }
+      :root input[type="checkbox"] + label:before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: url("./checkbox-sprite.png");
+        vertical-align: bottom;
+        position: relative;
+        bottom: 2px;
+      }
+      :root input[type="checkbox"]:checked + label:before {
+        background-position: 0 -16px;
+      }
+      :root input[type="checkbox"]:disabled + label:before {
+        background-position: 0 -32px;
+      }
+      :root input[type="checkbox"]:checked:disabled + label:before {
+        background-position: 0 -32px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <ul>
+        <li>
+          <input type="checkbox" name="banana" id="banana" />
+          <label for="banana">banana</label>
+        </li>
+        <li>
+          <input type="checkbox" name="bee" id="bee" />
+          <label for="bee">bee</label>
+        </li>
+        <li>
+          <input type="checkbox" name="beer" id="beer" checked />
+          <label for="beer">beer</label>
+        </li>
+        <li>
+          <input type="checkbox" name="meat" id="meat" disabled />
+          <label for="meat">meat</label>
+        </li>
+      </ul>
+    </form>
+  </body>
+</html>
