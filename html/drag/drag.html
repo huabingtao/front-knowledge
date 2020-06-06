@@ -1,0 +1,204 @@
+<!--
+ * @Author: huabingtao
+ * @Date: 2020-06-03 21:10:45
+ * @LastEditTime: 2020-06-03 21:16:49
+ * @LastEditors: huabingtao
+ * @Description: 
+ * @FilePath: /front-knowledge/html/drag/drag.html
+ * @可以输入预定的版权声明、个性签名、空行等
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drag</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        margin-top: 200px;
+      }
+      .art {
+        padding: 0 8px;
+      }
+      .container {
+        background: #edeff1;
+        width: 300px;
+        border-radius: 4px;
+        padding: 0 15px 15px;
+        flex: 0 1 200px;
+      }
+      .container h3 {
+        padding: 15px 0;
+      }
+      .list-wrap {
+        min-height: 40px;
+      }
+      .list-wrap > .list {
+        padding: 6px 15px;
+        border-radius: 4px;
+        background: #fff;
+        margin-bottom: 8px !important;
+        border: 1px solid #e1e4e8 !important;
+      }
+      .list-wrap > .list:hover {
+        cursor: move;
+      }
+      .list-wrap > .list:last-child {
+        margin-bottom: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article class="art" draggable="true">
+        <div class="container">
+          <h3>Todolist</h3>
+          <div class="list-wrap">
+            <div class="list" draggable="true">
+              浇花
+            </div>
+            <div class="list" draggable="true">
+              除草
+            </div>
+            <div class="list" draggable="true">
+              喂鱼
+            </div>
+            <div class="list" draggable="true">
+              做饭
+            </div>
+            <div class="list" draggable="true">
+              洗衣
+            </div>
+            <div class="list" draggable="true">
+              治虫
+            </div>
+            <div class="list" draggable="true">
+              伐木
+            </div>
+            <div class="list" draggable="true">
+              放羊
+            </div>
+            <div class="list" draggable="true">
+              吃饭
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="art" draggable="true">
+        <div class="container">
+          <h3>Doing</h3>
+          <div class="list-wrap"></div>
+        </div>
+      </article>
+      <article class="art" draggable="true">
+        <div class="container">
+          <h3>Done</h3>
+          <div class="list-wrap"></div>
+        </div>
+      </article>
+    </main>
+    <script>
+      var dragged;
+      var listEle = document.querySelector(".list-wrap");
+      var listEles = document.querySelectorAll(".list-wrap");
+      console.log(listEles);
+      // 插入到指定节点前
+      function insertBefore(newEle, targetEle) {
+        let parent = targetEle.parentNode;
+        if (parent.className === "list-wrap") {
+          parent.insertBefore(newEle, targetEle);
+        }
+      }
+      // 插入到指定节点后
+      function insertAfter(newEle, targetEle) {
+        let parent = targetEle.parentNode;
+        if (parent.className === "list-wrap") {
+          parent.insertBefore(newEle, targetEle.nextElementSibling);
+        }
+      }
+      // 获取节点对应所在父元素的 index
+      function findByIndex(target) {
+        let index;
+        let childrens = target.parentNode.children;
+        childrens = Array.from(childrens);
+        index = childrens.indexOf(target);
+        return index;
+      }
+
+      function createAddEventListener(ele) {
+        /* 拖动目标元素时触发drag事件 */
+        ele.addEventListener(
+          "dragstart",
+          function (event) {
+            // 保存拖动元素的引用(ref.)
+            dragged = event.target;
+            // 使其半透明
+            event.target.style.opacity = 0.6;
+          },
+          false
+        );
+        /* 拖动结束触发dragend事件 */
+        ele.addEventListener(
+          "dragend",
+          function (event) {
+            // 拖动结束恢复opacity
+            event.target.style.opacity = "";
+          },
+          false
+        );
+        //当将元素或文本选择拖动到有效放置目标（每几百毫秒）上时，会触发dragover事件。
+        ele.addEventListener(
+          "dragover",
+          function (event) {
+            // 阻止默认事件 如点击事件 链接跳转
+            event.preventDefault();
+            let target = event.target;
+            let byIndex = findByIndex(target);
+            let darggedIndex = findByIndex(dragged);
+            let className = target.className;
+            let targetParent = target.parentNode;
+            let darggedParent = dragged.parentNode;
+            // 获取当前拖拽元素的祖先article标签元素
+            let targetGrandParentIndex = findByIndex(
+              targetParent.parentNode.parentNode
+            );
+            //  获取当前放置元素的祖先article标签元素
+            let darggedGrandParentIndex = findByIndex(
+              darggedParent.parentNode.parentNode
+            );
+            // 根据列表排列索引判断是否是同一个article标签元素如果不是且都是拖拽元素和放置元素都是位于列表的的一个
+            if (
+              targetGrandParentIndex != darggedGrandParentIndex &&
+              byIndex === 0 &&
+              darggedIndex === 0
+            ) {
+              insertAfter(dragged, target);
+            }
+            if (className === "list" && byIndex != darggedIndex) {
+              if (byIndex < darggedIndex) {
+                insertBefore(dragged, target);
+              } else {
+                insertAfter(dragged, target);
+              }
+            }
+            let childrenLen = target.children.length;
+            // 判断放置的是否是一个面板且面板上的内容为空时候
+            if (className === "list-wrap" && !childrenLen) {
+              target.appendChild(dragged);
+            }
+          },
+          false
+        );
+      }
+      listEles.forEach((item, index) => {
+        createAddEventListener(item, index);
+      });
+    </script>
+  </body>
+</html>

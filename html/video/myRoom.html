@@ -1,0 +1,55 @@
+<!--
+ * @Author: huabingtao
+ * @Date: 2020-05-28 16:51:34
+ * @LastEditTime: 2020-05-28 21:06:10
+ * @LastEditors: huabingtao
+ * @Description: 
+ * @FilePath: /front-knowledge/html/video/myRoom.html
+ * @可以输入预定的版权声明、个性签名、空行等
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyRoom</title>
+    <style>
+      main {
+        margin: 0 auto;
+      }
+      .video {
+        width: 500px;
+        margin: 100px auto 0;
+        position: relative;
+      }
+      /* 设置字幕的样式 */
+      video::cue {
+        color: white;
+        font-size: 20px;
+        height: 20px;
+        line-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="video">
+        <video width="500" controls>
+          <source src="room.webm" />
+          <source src="room.avi" />
+          <source src="room.mp4" />
+          <track
+            src="zh.vtt"
+            kind="captions"
+            srclang="zh"
+            label="中文"
+            default
+          />
+          <track src="en.vtt" kind="captions" srclang="en" label="English"" />
+          您的浏览器不支持 videos 标签
+        </video>
+      </div>
+    </main>
+  </body>
+</html>
