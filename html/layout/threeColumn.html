@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>三栏布局</title>
+    <style>
+      .clear {
+        clear: both;
+      }
+      .section1 .container {
+        padding: 0 270px 0 220px;
+        max-width: 960px;
+        clear: both;
+      }
+      .section1 .center {
+        width: 100%;
+        height: 400px;
+        float: left;
+        background-color: crimson;
+      }
+      .section1 .left {
+        width: 200px;
+        height: 400px;
+        float: left;
+        margin-left: -100%;
+        position: relative;
+        left: -220px;
+        background-color: darkgrey;
+      }
+      .section1 .right {
+        width: 250px;
+        height: 400px;
+        float: left;
+        position: relative;
+        left: 270px;
+        margin-left: -250px;
+        background-color: darkmagenta;
+      }
+    </style>
+    <style>
+      .section2 .center,
+      .section2 .left,
+      .section2 .right {
+        float: left;
+        min-height: 400px;
+      }
+      .section2 .center {
+        width: 100%;
+      }
+      .section2 .center > .center-content {
+        margin: 0 270px 0 220px;
+        background-color: crimson;
+        min-height: 400px;
+      }
+      .section2 .left {
+        width: 200px;
+        margin-left: -100%;
+        background-color: darkgrey;
+      }
+      .section2 .right {
+        width: 250px;
+        margin-left: -250px;
+        background-color: darkmagenta;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section1">
+      <h2>圣杯布局</h2>
+      <div class="container">
+        <div class="center">center</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+        <div class="clear"></div>
+      </div>
+    </section>
+    <section class="section2">
+      <h2>双飞翼布局</h2>
+      <div class="container">
+        <div class="center">
+          <div class="center-content">center</div>
+        </div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+        <div class="clear"></div>
+      </div>
+    </section>
+  </body>
+</html>

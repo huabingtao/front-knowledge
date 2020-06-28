@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>两栏列自适应布局</title>
+    <style>
+      .section1 .wrap {
+        padding-left: 220px;
+      }
+      .section1 .left {
+        width: 200px;
+        float: left;
+        margin-left: -220px;
+      }
+      .section1 .right {
+        overflow: hidden;
+      }
+    </style>
+    <style>
+      section {
+        margin-bottom: 30px;
+      }
+      section h2 {
+        text-indent: 20px;
+      }
+      .left {
+        background-color: teal;
+      }
+      .right {
+        background-color: violet;
+      }
+      .section2 .wrap {
+        zoom: 1;
+        overflow: hidden;
+      }
+      .section2 .wrap .left {
+        float: left;
+        margin-right: 20px;
+      }
+      .section2 .wrap .right {
+        overflow: hidden;
+        zoom: 1;
+      }
+    </style>
+    <style>
+      .section3 .wrap {
+        display: flex;
+      }
+      .section3 .wrap .left {
+        flex: 0 0 auto;
+        margin-right: 20px;
+      }
+      .section3 .wrap .right {
+        flex: 1 1 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section1">
+      <h2>float + margin 实现左边固定右边自适应</h2>
+      <div class="wrap">
+        <div class="left">
+          <p>left:200px</p>
+        </div>
+        <div class="right">
+          <p>right 自适应</p>
+        </div>
+      </div>
+    </section>
+    <section class="section2">
+      <h2>float+overflow 实现</h2>
+      <div class="wrap">
+        <div class="left">
+          <p>left</p>
+        </div>
+        <div class="right">
+          <p>right</p>
+        </div>
+      </div>
+    </section>
+    <section class="section3">
+      <h2>Flex 实现</h2>
+      <div class="wrap">
+        <div class="left">
+          <p>left</p>
+        </div>
+        <div class="right">
+          <p>right</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
