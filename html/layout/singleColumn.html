@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="bingbing" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>单列布局</title>
+    <style>
+      .section1 {
+        max-width: 1000px;
+        margin: auto;
+      }
+      .section1 .header,
+      .section1 .content,
+      .section1 .footer {
+        width: 100%;
+      }
+      .section1 .header {
+        height: 100px;
+        margin-bottom: 20px;
+        background-color: sandybrown;
+      }
+      .section1 .content {
+        height: 400px;
+        margin-bottom: 20px;
+        background-color: grey;
+      }
+      .section1 .footer {
+        height: 100px;
+        background-color: teal;
+      }
+    </style>
+    <style>
+      .section2 .header {
+        max-width: 960px;
+        margin: 0 auto;
+        height: 100px;
+        margin-bottom: 20px;
+        background-color: sandybrown;
+      }
+      .section2 .content {
+        max-width: 800px;
+        margin: 0 auto;
+        height: 400px;
+        margin-bottom: 20px;
+        background-color: grey;
+      }
+      .section2 .footer {
+        max-width: 960px;
+        margin: 0 auto;
+        height: 100px;
+        background-color: teal;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section1">
+      <h2>等宽单列布局</h2>
+      <div class="header">
+        header
+      </div>
+      <div class="content">content</div>
+      <div class="footer">footer</div>
+    </section>
+    <section class="section2">
+      <h2>等宽单列布局(通栏)</h2>
+      <div class="header">
+        header
+      </div>
+      <div class="content">content</div>
+      <div class="footer">footer</div>
+    </section>
+  </body>
+</html>
