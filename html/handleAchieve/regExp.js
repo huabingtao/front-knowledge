@@ -17,3 +17,9 @@ function isPhone(num) {
   }
   return false;
 }
+
+function isEmail(email) {
+  // hbt123@123we.com
+  let pattern = /[a-zA-Z_\-\.]+@[a-zA-Z_\-\.]+\.[a-zA-Z]{2,4}$/;
+  return pattern.test(email);
+}
