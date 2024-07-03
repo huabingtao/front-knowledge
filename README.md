@@ -11,5 +11,6 @@
 
 ## 目录
 
-[html](https://github.com/huabingtao/front-knowledge/issues?q=is%3Aissue+is%3Aopen+label%3Ahtml)
-[css](https://github.com/huabingtao/front-knowledge/issues?q=is%3Aopen+is%3Aissue+label%3Acss)
+- [html](https://github.com/huabingtao/front-knowledge/issues?q=is%3Aissue+is%3Aopen+label%3Ahtml)
+- [css](https://github.com/huabingtao/front-knowledge/issues?q=is%3Aopen+is%3Aissue+label%3Acss)
+- [javaScript](https://github.com/huabingtao/front-knowledge/labels/javaScript)
